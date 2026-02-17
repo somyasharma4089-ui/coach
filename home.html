@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COACH® | Handbags, Wallets, Clothing, Menswear, Shoes & More</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #000;
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .top-bar {
+            background: #000;
+            color: #fff;
+            padding: 8px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .top-bar-left,
+        .top-bar-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .top-bar a:hover {
+            opacity: 0.7;
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            background: #fff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-icons a {
+            color: #000;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f1ed 0%, #e8e4df 100%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 14px 40px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid #000;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #000;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #000;
+        }
+
+        .btn-secondary:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Featured Products Section */
+        .featured-products {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: 1.5px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: #f5f5f5;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #999;
+            overflow: hidden;
+        }
+
+        .product-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .product-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .product-card .price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Banner Section */
+        .banner {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .banner h2 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .banner p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        /* Collections Grid */
+        .collections {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .collection-item {
+            position: relative;
+            height: 500px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .collection-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .collection-item:hover::before {
+            opacity: 1;
+        }
+
+        .collection-content {
+            z-index: 2;
+            text-align: center;
+            color: #000;
+        }
+
+        .collection-content h3 {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: #f8f8f8;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+
+        .newsletter p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            padding: 14px 40px;
+            background: #000;
+            color: #fff;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: #333;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-flex {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .content-flex.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .content-text {
+            flex: 1;
+        }
+
+        .content-text h2 {
+            font-size: 42px;
+            font-weight: 300;
+            margin-bottom: 24px;
+            letter-spacing: 1.5px;
+        }
+
+        .content-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .content-image {
+            flex: 1;
+            height: 500px;
+            background: #e5e5e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 8px 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .main-nav {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .collection-item {
+                height: 400px;
+            }
+
+            .content-flex,
+            .content-flex.reverse {
+                flex-direction: column;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <span>United States</span>
+            <a href="#">Store Locator</a>
+        </div>
+        <div class="top-bar-right">
+            <a href="#">Wishlist</a>
+            <a href="#">My Account</a>
+            <a href="#">View Bag (0)</a>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <a href="#" class="logo">COACH</a>
+        <ul class="nav-links">
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Bags</a></li>
+            <li><a href="#">New</a></li>
+            <li><a href="#">Gifts</a></li>
+        </ul>
+        <div class="nav-icons">
+            <a href="#">Search</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Start fresh.</h1>
+            <p>With the new Chelsea bag by your side.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Shop Women's</a>
+                <a href="#" class="btn btn-secondary">Shop Bags</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <h2 class="section-title">More ways to refresh your look.</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">Shoulder Bags
+
+                    <img src="/SHOP SHOULDER BAGS.webp" alt="">
+                </div>
+                <h3>Shop Shoulder Bags</h3>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Bestsellers
+
+                    <img src="/BEST SELLERS.webp" alt="">
+                </div>
+                <h3>Shop Bestsellers</h3>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Tabby Collection
+
+                    <img src="/SHOP TABBY.webp" alt="">
+                </div>
+                <h3>Shop Tabby</h3>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Wallets
+
+                    <img src="/BUY WALLETS.webp" alt="">
+                </div>
+                <h3>Shop Wallets</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner -->
+    <section class="banner">
+        <h2>Getting all the love.</h2>
+        <p>Trending and top-selling styles for spring.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">Shop Trending Now</a>
+            <a href="#" class="btn btn-secondary">Shop New Arrivals</a>
+        </div>
+    </section>
+
+    <!-- Collections Grid -->
+    <section class="collections">
+        <h2 class="section-title">Want more? Right this way.</h2>
+        <div class="collections-grid">
+            <div class="collection-item">
+                <div class="collection-content">
+                    <h3>Spring Collection</h3>
+                    <a href="#" class="btn btn-primary">Explore</a>
+                </div>
+            </div>
+            <div class="collection-item">
+                <div class="collection-content">
+                    <h3>Signature Styles</h3>
+                    <a href="#" class="btn btn-primary">Discover</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Discover our new chapter (as soon as it drops).</h2>
+        <p>Sign up to receive exclusive updates and offers.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email address">
+            <button type="submit">Sign Up</button>
+        </form>
+    </section>
+
+    <!-- Content Section 1 -->
+    <section class="content-section">
+        <div class="content-flex">
+            <div class="content-image">WNBA Partnership Image</div>
+            <div class="content-text">
+                <h2>Redefine style on and off the court.</h2>
+                <p>Discover our partnership with the WNBA and meet the newest draftees bringing their unique style to the game.</p>
+                <a href="#" class="btn btn-primary">Meet the Draftees</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section 2 -->
+    <section class="content-section">
+        <div class="content-flex reverse">
+            <div class="content-image">Style Guides Image</div>
+            <div class="content-text">
+                <h2>Your ultimate destination for the latest trends.</h2>
+                <p>Explore our comprehensive bag guides, style tips, and more to elevate your everyday look.</p>
+                <a href="#" class="btn btn-primary">Explore Our Bag Guides</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section 3 -->
+    <section class="content-section">
+        <div class="content-flex">
+            <div class="content-image">Omar Apollo Image</div>
+            <div class="content-text">
+                <h2>Introducing our newest ambassador: Omar Apollo.</h2>
+                <p>Discover how Omar Apollo embodies the modern COACH spirit with his distinctive style.</p>
+                <a href="#" class="btn btn-primary">Shop Men's</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>About COACH</h3>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Investors</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Coach Care</a></li>
+                    <li><a href="#">Personalization</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                    <li><a href="#">Store Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Coach IP Holdings LLC. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
